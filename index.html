@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div class="row">
+		<div class="col-md-7 position-relative">
+			<div class="overlay-div"></div>
+		
+			<div class="phone-container">
+				<div class="phone-figure">
+					<div class="notch"></div>
+					<div class="inner-bezzel">
+						<div class="sender-id-heading" *ngIf="currentChat" [@fadeIn]>
+							<span class="left-icon"><i class="fas fa-angle-left"></i></span>
+							<span class="sender-id"><strong>{{ currentChat.senderId }}</strong></span>
+						</div>
+		
+						<div class="message-content" *ngIf="activeChatIndex === chatSamples.indexOf(currentChat)" [@fadeInGrow]="
+		                    activeChatIndex === chatSamples.indexOf(currentChat)
+		                  ">
+							<div *ngFor="let chat of currentChat.chats; index as i">
+								<div class="chat-in" *ngIf="chat.type === 'IN'">
+									<span>{{ chat.message }}</span>
+								</div>
+								<div class="chat-out" *ngIf="chat.type === 'OUT'">
+									<span>{{ chat.message }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
